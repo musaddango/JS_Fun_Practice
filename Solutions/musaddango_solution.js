@@ -51,6 +51,46 @@ function max(...nums){
     return maxNum;
 }
 
+function addRecurse(...nums){
+    if(nums.length === 0) return 0;
+
+    let newArray = nums.slice(1)
+    return nums[0] + addRecurse(newArray);
+}
+
+function mulRecurse(...nums){
+    if(nums.length === 0) return 1;
+
+    let newArray = nums.slice(1);
+    return nums[0] * mulRecurse(...newArray);
+}
+
+function minRecurse(...nums){
+    // Base case
+    if(nums.length === 1){
+        return nums[0];
+    }
+    const lastSmallest = minRecurse(...nums.slice(1));
+    return nums[0] < lastSmallest ? nums[0] : lastSmallest;
+}
+
+function maxRecurse(...nums){
+    //Base case
+    if(nums.length === 1){
+        return [0];
+    }
+    const lastBiggest = maxRecurse(...nums.slice(1));
+    return nums[0] > lastBiggest ? nums[0] : lastBiggest;
+}
+
+function not(func){
+    if(!(func instanceof Function) || typeof func() !== "number"){
+        return "Invalid argument.";
+    }
+
+    return func() * -1;
+}
+
 
 
 module.exports = {
@@ -65,11 +105,11 @@ module.exports = {
     mul,
     min,
     max,
-    // addRecurse,
-    // mulRecurse,
-    // minRecurse,
-    // maxRecurse,
-    // not,
+    addRecurse,
+    mulRecurse,
+    minRecurse,
+    maxRecurse,
+    not,
     // acc,
     // accPartial,
     // accRecurse,
