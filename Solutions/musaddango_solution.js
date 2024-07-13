@@ -20,6 +20,15 @@ function add(...nums) {
 };
 
 
+function sub(...args) {
+
+    let result = args[i];
+    for (let i = 0; i < args.length; i++) {
+        result -= args[i];
+    };
+}
+
+
 function mul(...nums) {
     const array = [...nums];
     let mult = 1;
@@ -94,7 +103,7 @@ function not(func) {
 function acc(func, initial) {
 
     return function (...args) {
-        return func(args, initial);
+        return args.reduce((accum, current) => func(current, accum), initial);
     }
 }
 
@@ -109,7 +118,7 @@ module.exports = {
     minb,
     maxb,
     add,
-    // sub,
+    sub,
     mul,
     min,
     max,
