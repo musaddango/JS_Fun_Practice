@@ -107,6 +107,13 @@ function acc(func, initial) {
     }
 }
 
+function accPartial(func, start, end) {
+    return function (...args) {
+        let sub = args.slice(start, end).reduce((accum, current) => func(current, accum), 0)
+        const result = [...args.slice(0, start), sub, ...args.slice(end)];
+        return result;
+    }
+}
 
 
 
@@ -128,7 +135,7 @@ module.exports = {
     maxRecurse,
     not,
     acc,
-    // accPartial,
+    accPartial,
     // accRecurse,
     // fill,
     // fillRecurse,
