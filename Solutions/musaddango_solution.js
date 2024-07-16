@@ -115,7 +115,18 @@ function accPartial(func, start, end) {
     }
 }
 
+function fill(num) {
+    return new Array(num).fill(num);
+}
 
+function fillRecurse(value, length = value) {
+    // Base case
+    if (length === 0) return [];
+
+    let result = [...fillRecurse(value, length - 1), value];
+
+    return result;
+}
 
 module.exports = {
     identity,
@@ -137,8 +148,8 @@ module.exports = {
     acc,
     accPartial,
     // accRecurse,
-    // fill,
-    // fillRecurse,
+    fill,
+    fillRecurse,
     // set,
     // identityf,
     // addf,
