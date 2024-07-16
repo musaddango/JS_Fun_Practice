@@ -128,6 +128,21 @@ function fillRecurse(value, length = value) {
     return result;
 }
 
+function set(arr) {
+    let result = [];
+    let hash = {};
+
+
+    for (let i = 0; i < arr.length; i++) {
+        if (!(arr[i] in hash)) {
+            hash[arr[i]] = true;
+            result.push(arr[i]);
+        }
+    }
+
+    return result;
+}
+
 module.exports = {
     identity,
     addb,
@@ -150,7 +165,7 @@ module.exports = {
     // accRecurse,
     fill,
     fillRecurse,
-    // set,
+    set,
     // identityf,
     // addf,
     // liftf,
